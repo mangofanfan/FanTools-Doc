@@ -72,5 +72,5 @@ jobs:
 
       - name: Upload to COS
         run: |
-          coscmd upload -rfs --delete ./vitepress/dist/ /
+          coscmd upload -rfs --delete .vitepress/dist/ /
         # coscmd upload ./site/index.html / -H "{'Content-Disposition': 'inline'}"
