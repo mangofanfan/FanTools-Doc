@@ -18,7 +18,7 @@
 大概是这样。
 
 ## 调用接口
-与重构之前的早期版本一致，工具箱的一言使用**[Hitokoto](https://developer.hitokoto.cn/)**实现，提供官方接口（v1.hitokoto.cn）和芒果的帆域镜像接口（fan-hitokoto.mangofanfan.cn）。镜像接口的唯一好处在于没有访问限制（QPS），此外两个接口完全一致。
+与重构之前的早期版本一致，工具箱的一言使用 **[Hitokoto](https://developer.hitokoto.cn/)** 实现，提供官方接口（v1.hitokoto.cn）和芒果的帆域镜像接口（fan-hitokoto.mangofanfan.cn）。镜像接口的唯一好处在于没有访问限制（QPS），此外两个接口完全一致。
 
 如果您对这个一言接口感兴趣，可以参阅以下链接来了解更多：
 

@@ -30,7 +30,7 @@ export default defineConfig({
         text: '关于与更多信息',
         items: [
           { text: '版本', link: '/about/version' },
-          { text: '日志', link: '/about/contribute' }
+          { text: '贡献', link: '/about/contribute' }
         ]
       }
     ],
