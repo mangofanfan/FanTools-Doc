@@ -52,3 +52,25 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: .vitepress/dist
+
+      # 上传至腾讯云COS
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.11'  # 设置 Python 版本
+
+      - name: Setup coscmd and sdk
+        run: pip install coscmd
+
+      - name: Configure coscmd
+        env:
+          SECRET_ID: ${{ secrets.SECRET_ID }}
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          BUCKET: docs-fantools-1309266774
+          REGION: ap-nanjing
+        run: coscmd config -a $SECRET_ID -s $SECRET_KEY -b $BUCKET -r $REGION
+
+      - name: Upload to COS
+        run: |
+          coscmd upload -rfs --delete ./site/ /
+          coscmd upload ./site/index.html / -H "{'Content-Disposition': 'inline'}"
