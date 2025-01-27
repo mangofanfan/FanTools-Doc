@@ -17,6 +17,10 @@ export default defineConfig({
   lang: "zh-CN",
   title: "芒果工具箱",
   description: "简单地运行任何Python小工具",
+  head: [
+    // 添加图标
+    ['link', { rel: 'icon', href: '/favicon.ico' }]
+  ],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
