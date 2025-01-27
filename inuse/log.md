@@ -32,6 +32,6 @@
 
 使用项目结构`./app/common/logger.py`中的`logger`对象的`trace`、`debug`、……、`critical`方法来打印你需要的日志。如果你编辑的文件中尚未导入`logger`，你可能需要类似如下代码来完成相对导入：
 
-```python title="导入logger"
+```python [导入logger]
 from ..common.logger import logger
 ```

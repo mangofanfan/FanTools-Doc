@@ -15,11 +15,14 @@ hero:
       link: /about/version
 
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: 简单上手
+    icon: 👀
+    details: 免于繁琐配置，一键启动打包好的各式Python工具
+  - title: 工具分享
+    icon: 📧
+    details: 简单地安装工具，或编写并分发自己的工具
+  - title: 开放源代码
+    icon: 🔐
+    details: 社区共建，没有后门，安全可控
 ---
 

@@ -4,7 +4,7 @@
 由于工具箱尚在早期开发阶段，这里的快速使用如无特殊标注，则默认仅针对最新版本哦。
 :::
 
-`0.2.1`之后，工具箱现在需要通过正儿八经的安装程序安装在系统中。您可以从**[这里（本文档中的版本列表页面）](/about/version.md)**、**[这里（GitHub的Release页面）](https://github.com/mangofanfan/FanTools2/releases)**和**[这里（帆域上的版本更新记录页面）](https://ifanspace.top/2024/08/28/510.html)**下载最新版本的安装包。
+`0.2.1`之后，工具箱现在需要通过正儿八经的安装程序安装在系统中。您可以从 **[这里（本文档中的版本列表页面）](/about/version.md)**、**[这里（GitHub的Release页面）](https://github.com/mangofanfan/FanTools2/releases)** 和 **[这里（帆域上的版本更新记录页面）](https://ifanspace.top/2024/08/28/510.html)** 下载最新版本的安装包。
 
 ## 登录工具箱
 ![登录窗口](/images/FanTools_LoginWindow_0.2.2.png)

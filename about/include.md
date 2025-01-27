@@ -1,0 +1,17 @@
+# 使用到的外部项目
+
+## 芒果工具箱（重构）
+| 项目                                      |                                                   链接                                                   | 简介        | 协议                   |
+|-----------------------------------------|:------------------------------------------------------------------------------------------------------:|:----------|:---------------------|
+| **PySide6**（Qt for Python）              |                                 [官网](https://doc.qt.io/qtforpython-6/)                                 | 基本窗口库     | LGPL                 |
+| **QFluentWidgets**（PyQt-Fluent-Widgets） |     [官网](https://qfluentwidgets.com/zh/) [GitHub](https://github.com/zhiyiYo/PyQt-Fluent-Widgets)      | 窗口美化&组件库  | GPL-v3               |
+| PyQt/PySide中使网络请求更加方便简洁的实践              |                          [博客园 Re-Ch](https://www.cnblogs.com/rech/p/18293838)                          | 简化网络请求    | 代码BSD<br>文章CC-BY-4.0 |
+| **Hitokoto**（一言）                        |                  [官网](https://hitokoto.cn/) [GitHub](https://github.com/hitokoto-osc)                  | 一言        | ？                    |
+| **loguru**                              | [GitHub](https://github.com/delgan/loguru) [文档](https://loguru.readthedocs.io/en/stable/overview.html) | 开箱即用的日志模块 | MIT                  |
+
+## 芒果工具箱文档
+
+| 项目                            |                                      链接                                      | 简介    | 协议  |
+|-------------------------------|:----------------------------------------------------------------------------:|:------|:----|
+| **VitePress**                 | [官网](https://vitepress.dev/zh/) [GitHub](https://github.com/vuejs/vitepress) | 构建本文档 | MIT |
+| **vitepress-plugin-lightbox** |      [GitHub](https://github.com/BadgerHobbs/vitepress-plugin-lightbox)      | 图片灯箱  | MIT |
