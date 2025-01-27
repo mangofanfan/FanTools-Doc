@@ -11,7 +11,10 @@
 
 ## 芒果工具箱文档
 
-| 项目                            |                                      链接                                      | 简介    | 协议  |
-|-------------------------------|:----------------------------------------------------------------------------:|:------|:----|
-| **VitePress**                 | [官网](https://vitepress.dev/zh/) [GitHub](https://github.com/vuejs/vitepress) | 构建本文档 | MIT |
-| **vitepress-plugin-lightbox** |      [GitHub](https://github.com/BadgerHobbs/vitepress-plugin-lightbox)      | 图片灯箱  | MIT |
+| 项目                                                    |                                                                                链接                                                                                 | 简介         | 协议  |
+|-------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------|:----|
+| **VitePress**                                         |                                           [官网](https://vitepress.dev/zh/) [GitHub](https://github.com/vuejs/vitepress)                                            | 构建本文档      | MIT |
+| **vitepress-plugin-lightbox**                         |                                                [GitHub](https://github.com/BadgerHobbs/vitepress-plugin-lightbox)                                                 | 图片灯箱       | MIT |
+| **@nolebase/vitepress-plugin-git-changelog**          |     [GitHub](https://github.com/nolebase/integrations) [文档](https://nolebase-integrations.ayaka.io/pages/zh-CN/integrations/vitepress-plugin-git-changelog/)      | 基于Git的页面历史 | MIT |
+| **@nolebase/vitepress-plugin-enhanced-readabilities** | [GitHub](https://github.com/nolebase/integrations) [文档](https://nolebase-integrations.ayaka.io/pages/zh-CN/integrations/vitepress-plugin-enhanced-readabilities/) | 阅读增强       | MIT |
+| **vitepress-plugin-group-icons**                      |                                   [GitHub](https://github.com/yuyinws/vitepress-plugin-group-icons) [文档](https://vp.yuy1n.io/)                                    | 代码组图标      | MIT |
