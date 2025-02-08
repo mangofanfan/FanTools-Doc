@@ -3,6 +3,7 @@ import Layout from "./Layout.vue";
 import { h } from 'vue';
 import 'virtual:group-icons.css' //代码组样式
 import './style/index.css'
+import './style/main.css'
 
 // 阅读增强
 import {
