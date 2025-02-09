@@ -4,6 +4,8 @@
 
 ## 当前版本：0.2.3
 
+如果您已经安装了旧版本工具箱，可能需要先卸载旧版本再安装此版本，不能直接覆盖安装。
+
 **包含的新特性**
 
 * **新的用户系统** - 通过OAUTH2协议，接入[帆域主站](https://ifanspace.top/)的用户系统。帆域是芒果帆帆的一个网站项目，基于WordPress+Zibll主题部署。
@@ -44,7 +46,6 @@
 * 来自上游的窗口问题，参见`0.2.1`的已知问题。
 
 **下载**
-
 安装程序下载链接：[https://file.mangofanfan.cn/s/9ktb6v](https://file.mangofanfan.cn/s/9ktb6v)
 * MD5：5152cbdd0a93f2bf83a4709adadd3ec4
 * SHA1：629e33e271a275c819890b3d5012f525a7423a88
@@ -67,7 +68,6 @@
     - 已经确定是PySide6 6.8.1的问题，上游等待PySide6修复。
 
 **下载**
-
 安装程序下载链接：[https://file.mangofanfan.cn/s/1nehnw](https://file.mangofanfan.cn/s/1nehnw)
 * MD5：992cd3bf1b1b8b3b4089559cff4db91c
 * SHA1：3703329b0bd54e925aa668a926ae26c2687d73fe
