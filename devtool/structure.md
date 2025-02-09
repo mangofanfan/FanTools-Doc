@@ -28,7 +28,8 @@ tool->...
   "ver": "0.0.1",
   "author": "MangoFanFan",
   "tip": "Calculate Hash of anything.",
-  "launchMode": 0
+  "launchMode": 0,
+  "modules": []
 }
 ```
 
@@ -52,6 +53,7 @@ if __name__ == "__main__":
 * `launchMode`是工具的启动模式，此项正在制作，保持为`0`即可。
 * `ver`必须是`x.x.x`格式的版本号，计划用于未来的工具管理，此项正在制作。
 * `author`作者。
+* `modules`（与`module`不同）是此工具中使用到的Python第三方模块，以列表\[字符串\]的形式呈现，若无则为空列表，以供工具箱从pypi下载这些模块。
 
 ## 使用`public`代码
 工具目录`tool`下还有一个`public`目录，这里存放的是公共代码，存放在此是为了与工具箱本体的代码做区分，并且方便工具导入。
@@ -75,3 +77,52 @@ PySide6原生的设计师和UIC工具设计的，使用Qt原生组件的窗口�
 :::
 
 另外，如果您使用Pycharm，可以参考我的这篇文章：[为Pycharm添加PySide6外部工具的进阶教程](https://ifanspace.top/2025/01/26/599.html)。
+
+## 创建一个工具吧
+
+::: code-group
+
+```json [tool.json]
+{
+  "name": "Example Tool",
+  "module": "exampleTool",
+  "icon": "",
+  "ver": "3.2.1",
+  "author": "MangoFanFan",
+  "tip": "Basic example tool",
+  "launchMode": 0,
+  "modules": ["requests", "PySide6-Fluent-Widgets"]
+}
+```
+
+```python [run.py]
+from ..public.public_window import FanWindow
+
+if __name__ == 'tool.exampleTool.run':
+    w = FanWindow()
+    w.show()
+```
+:::
+
+在工具目录`tool/exampleTool/`下创建如上两个文件，即可注册一个可用的工具`Example Tool`。该工具可以打开一个空窗口，虽然它什么都干不了。
+![空白窗口](/images/FanTools_ExampleTool_1.png)
+
+此窗口是基于PySide6+QFluentWidgets实现的。芒果**个人建议**，希望接入工具箱的工具们如有GUI页面，最好使用PySide6实现GUI，以方便接入。
+
+PyQt5/6、PySide2均可以较低成本地切换到PySide6。
+
+但是谁**规定**只能使用Qt家的窗口？看不起Python内置窗口库Tkinter？
+
+```python [run.py]
+import tkinter
+
+if __name__ == 'tool.exampleTool.run':
+    top = tkinter.Tk()
+    top.mainloop()
+```
+
+![另一个空白窗口](/images/FanTools_ExampleTool_2.png)
+
+这样看来，Tkinter程序几乎可以无痛迁移为工具。
+
+接下来，在窗口中如何布局组件，实现怎样的功能，就全靠工具开发者们的智慧啦。进阶的工具开发指南需要等待工具系统的进一步开发，目前仅作了解即可，如果您也对芒果工具箱这个项目感兴趣的话，欢迎现在就加入我们（其实只有我一个人啦）嗷！
