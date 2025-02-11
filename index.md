@@ -5,6 +5,9 @@ layout: home
 hero:
   name: "芒果工具箱"
   text: "简单地运行任何Python小工具"
+  image:
+    src: /logo.png
+    alt: 芒果工具箱
   tagline: 轻量化 傻瓜式 快速上手 易于分享
   actions:
     - theme: brand
