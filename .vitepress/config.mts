@@ -46,7 +46,9 @@ export default defineConfig({
       {
         text: "工具开发",
         items: [
-          { text: '结构', link: '/devtool/structure' }
+          { text: '结构', link: '/devtool/structure' },
+          { text: '公共代码', link: '/devtool/public_code' },
+          { text: '启动模式', link: '/devtool/launch_mode' }
         ]
       },
       {
