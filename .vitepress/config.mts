@@ -73,7 +73,12 @@ export default defineConfig({
     ],
 
     search: {
-      provider: 'local'
+      provider: 'algolia',
+      options: {
+        appId: 'KN3ULRBK25',
+        apiKey: '5e5f1a3e75dfaaeb3ab126aae0990f12',
+        indexName: 'fantools-mangofanfan'
+      }
     },
 
     footer: {
