@@ -137,8 +137,16 @@ export default defineConfig({
           }
       ),
       GitChangelog({
-       // 填写在此处填写您的仓库链接
-       repoURL: () => 'https://github.com/mangofanfan/FanTools-Doc',
+          // 填写在此处填写您的仓库链接
+          repoURL: () => 'https://github.com/mangofanfan/FanTools-Doc',
+          mapAuthors: [
+            {
+              name: "MangoFanFan_",
+              username: "mangofanfan",
+              mapByEmailAliases: "mangofanfanw@icloud.com",
+              mapByNameAliases: ["MangoFanFan", "MangoFanFan_"]
+            }
+          ]
       }),
       GitChangelogMarkdownSection(),
     ],
