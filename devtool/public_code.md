@@ -45,7 +45,7 @@ PySide6 * QFluentWidgets 窗口，用法非常简单合理。
 ## qfluentwidgetsfanaddons
 如果 `public_window` 是轻度魔改，这里就是中重度的魔改了，以至于我认为有必要单独分一个模块出来给它，并且起了一个（看起来）非常厉害的名字。
 
-是针对 PySide6 下 QFluentWidgets 与其 Pro 组件库的功能扩展，目前同样处于早期开发阶段，主要针对工具箱部分组件的需要而设计，未来有发布至 pypi 的打算。
+是针对 PySide6 下 QFluentWidgets 与其 Pro 组件库的功能扩展，目前同样处于早期开发阶段，主要针对工具箱部分组件的需要而设计，未来有发布至 pypi 的打算，但基本不会考虑支持 PyQt/PySide 全系列。
 
 决定设计此模块的原因是希望能在设计师中使用我的魔改组件！所以，它来辣！
 
@@ -54,11 +54,20 @@ PySide6 * QFluentWidgets 窗口，用法非常简单合理。
 :::
 
 ### list_widget
+本模块中提供的列表组件主要是简化了右键菜单的配置，简化开发者配置组件在右键单击时显示弹出菜单的操作逻辑。本模块提供以下三个组件：
 
-#### FanRoundListWidget
-RoundListWidget 是 Pro 组件。FanRoundListWidget 在 RoundListWidget 的基础上简化了右键菜单的设置，可以通过简单的 `setRightClickMenu()` 来设置右键菜单。
+* FanQListWidget
+    * QListWidget 是 PySide6 的原生列表组件。
 
-该函数接收两个参数，可以是两个菜单对象（`RoundMenu` 或 `QMenu`），也可以是一个菜单与一个右键菜单模式（`RightClickMenuMode`）。**该函数只接受两个参数。**
+* FanListWidget
+    * ListWidget 是 QFluentWidgets 的组件。
+
+* FanRoundListWidget
+    * RoundListWidget 是 Pro 组件。
+
+通过简单的 `setRightClickMenu()` ，开发者可以非常方便地设置右键菜单。
+
+该函数**必须**接收两个参数，可以是两个菜单对象（`RoundMenu` 或 `QMenu`），也可以是一个菜单与一个右键菜单模式（`RightClickMenuMode`）。
 
 ```python [list_widget.py]
 @overload
@@ -71,12 +80,33 @@ def setRightClickMenu(self, menu: RoundMenu | QMenu, menu2: RoundMenu | QMenu): 
 
 若传入了两个菜单，则在 QListWidgetItem 上右键单击时打开`menu2`，在列表组件的空白区域右键时打开`menu`，无需`RightClickMenuMode`。
 
-正在开发的翻译家工具的主窗口中使用了 FanRoundListWidget，可以查看其用法。
+正在开发的翻译家工具的主窗口中使用了 FanRoundListWidget：
+
+```python [window.py] {13,14}
+self.SuggestionsPopMenu1 = RoundMenu()
+self.SuggestionsPopMenu1.addActions([
+    Action(FIC.DELETE, self.tr("Clear suggestions"),
+           triggered=self._clearThinking)
+])
+self.SuggestionsPopMenu2 = RoundMenu()
+self.SuggestionsPopMenu2.addActions([
+    Action(FIC.UP, self.tr("Apply suggestion"),
+           triggered=self._onApplySuggestion),
+    Action(FIC.DELETE, self.tr("Clear suggestions"),
+           triggered=self._clearThinking)
+])
+self.RoundListWidget_Text_Suggested.setRightClickMenu(self.SuggestionsPopMenu1, self.SuggestionsPopMenu2)
+self.RoundListWidget_Text_Suggested.setLeftClickEnabled(False)
+```
+
+此外，顺手提供一个 `setLeftClickEnabled()` 方法，可以控制列表是否处理鼠标左键的点击事件。设置为 False 之后，左键将无法选中列表中的 QListWidgetItem。
 
 ### card_widget
 
 #### ClickableCardWidget
 可点击选中的卡片组件，用来实现有复杂需求的列表。下面是工具箱翻译工具中的一个使用案例，`TextLineWidget`本质是卡片，放在滚动区域中并实现点击选中效果以模拟成列表组件。
+
+只需要下面划出的两行就可以启用点击选中卡片的功能。重写 `setChosen()` 方法可以自定义在选中或取消选中时的处理方法。
 
 ```python [text_line_widget.py] {18,19}
 from PySide6.QtCore import Signal, QSize
