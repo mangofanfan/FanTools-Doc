@@ -16,6 +16,9 @@ hero:
     - theme: alt
       text: 获取
       link: /about/version
+    - theme: alt
+      text: 开发
+      link: /devtool/structure
 
 features:
   - title: 简单上手
