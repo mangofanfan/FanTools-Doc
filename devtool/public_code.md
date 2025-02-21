@@ -47,20 +47,109 @@ PySide6 * QFluentWidgets 窗口，用法非常简单合理。
 
 是针对 PySide6 下 QFluentWidgets 与其 Pro 组件库的功能扩展，目前同样处于早期开发阶段，主要针对工具箱部分组件的需要而设计，未来有发布至 pypi 的打算。
 
-由于 qfluentwidgetsfanaddons 目前不在重点开发，下面提供的描述仅供参考，可以在工具箱的工具目录 `public/qfluentwidgetsfanaddons` 中查看源码。
+决定设计此模块的原因是希望能在设计师中使用我的魔改组件！所以，它来辣！
 
-### line_widget
+::: tip 注意
+由于 qfluentwidgetsfanaddons 目前不在重点开发，下面提供的描述仅供参考，可以在工具箱的工具目录 `public/qfluentwidgetsfanaddons` 中查看源码。
+:::
+
+### list_widget
 
 #### FanRoundListWidget
 RoundListWidget 是 Pro 组件。FanRoundListWidget 在 RoundListWidget 的基础上简化了右键菜单的设置，可以通过简单的 `setRightClickMenu()` 来设置右键菜单。
 
-该函数接收两个参数，可以是两个菜单对象（`RoundMenu` 或 `QMenu`），也可以是一个菜单与一个右键菜单模式。
+该函数接收两个参数，可以是两个菜单对象（`RoundMenu` 或 `QMenu`），也可以是一个菜单与一个右键菜单模式（`RightClickMenuMode`）。**该函数只接受两个参数。**
+
+```python [list_widget.py]
+@overload
+def setRightClickMenu(self, menu: RoundMenu | QMenu, mode: RightClickMenuMode): ...
+@overload
+def setRightClickMenu(self, menu: RoundMenu | QMenu, menu2: RoundMenu | QMenu): ...
+```
+
+`RightClickMenuMode`支持三种枚举类型，分别是`AlwaysShow`（在列表组件中任意位置右键都可以打开菜单）、`OnItemShow`（只有在 QListWidgetItem 上右键才能打开菜单）与`NeverShow`（从不打开菜单）。此选项仅在只传入一个菜单对象时有效。
+
+若传入了两个菜单，则在 QListWidgetItem 上右键单击时打开`menu2`，在列表组件的空白区域右键时打开`menu`，无需`RightClickMenuMode`。
 
 正在开发的翻译家工具的主窗口中使用了 FanRoundListWidget，可以查看其用法。
 
 ### card_widget
 
 #### ClickableCardWidget
-可点击选中的卡片组件，用来实现有复杂需求的列表。
+可点击选中的卡片组件，用来实现有复杂需求的列表。下面是工具箱翻译工具中的一个使用案例，`TextLineWidget`本质是卡片，放在滚动区域中并实现点击选中效果以模拟成列表组件。
 
-可以设置卡片可选中，需要设置选中后的颜色。将若干卡片添加到 ScrollArea 中，并自行连接信号，可以实现在一张卡片被点击时选中该卡片，同时取消选中其他卡片。
+```python [text_line_widget.py] {18,19}
+from PySide6.QtCore import Signal, QSize
+from PySide6.QtWidgets import QHBoxLayout
+from qfluentwidgets import BodyLabel, IconWidget
+from qfluentwidgets import FluentIcon as FIC
+
+from .text_object import TextObject
+from ...public.qfluentwidgetsfanaddons import ClickableCardWidget
+
+
+class TextLineWidget(ClickableCardWidget):
+
+    isChosenSignal = Signal(TextObject)
+
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self._stayChosen = False
+
+        self.setChosenEnabled(True)
+        self.setClickToChoose(True)
+
+        self._textObject: TextObject = None
+
+        self._layout = QHBoxLayout()
+        self.setLayout(self._layout)
+
+        self._iconLabel = IconWidget()
+        self._iconLabel.setFixedSize(QSize(24, 24))
+        self._textLabel = BodyLabel()
+        self._textLabel.setText("")
+
+        self._layout.addWidget(self._iconLabel)
+        self._layout.addWidget(self._textLabel)
+
+        self.clicked.connect(lambda: self.setChosen(True))
+
+    def setText(self, text: str) -> None:
+        self._textLabel.setText(text)
+        return None
+
+    def setTextObject(self, textObject: TextObject) -> None:
+        self._textObject = textObject
+        self._textLabel.setText(f"[{self._textObject.id}] {self._textLabel.text()}")
+        if self._textObject.getTranslated():
+            self.setAccept()
+        return None
+
+    def setAccept(self):
+        self._iconLabel.setIcon(FIC.ACCEPT)
+        return None
+
+    def setUnAccept(self):
+        self._iconLabel.setIcon(FIC.QUESTION)
+        return None
+
+    def setChosen(self, isChosen: bool) -> None:
+        if isChosen:
+            super().setChosen(isChosen)
+            self._stayChosen = True
+            self.isChosenSignal.emit(self._textObject)
+        else:
+            if self._stayChosen:
+                self._stayChosen = False
+            else:
+                super().setChosen(isChosen)
+        return None
+
+    @property
+    def textObject(self):
+        return self._textObject
+```
+
+以上代码实现的组件被添加在下图所示翻译家窗口的左侧滚动区域中，从而模拟成列表。
+
+![翻译家效果](/images/Translator_View_0.3.0.png)
