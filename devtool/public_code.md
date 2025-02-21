@@ -41,3 +41,26 @@ PySide6 * QFluentWidgets 窗口，用法非常简单合理。
 查看[QFluentWidgets的文档](https://qfluentwidgets.com/zh/)来入门这款Win11风格的PyQt/PySide组件库。
 
 轻度魔改体现在哪里呢？`FanWindow`计划同时支持Windows11的云母效果与Windows10的亚克力效果，与芒果工具箱的主窗口同步。另外，`FanWindow`还提供一个`windowResizeSignal`信号，会在窗口大小变化时触发。
+
+## qfluentwidgetsfanaddons
+如果 `public_window` 是轻度魔改，这里就是中重度的魔改了，以至于我认为有必要单独分一个模块出来给它，并且起了一个（看起来）非常厉害的名字。
+
+是针对 PySide6 下 QFluentWidgets 与其 Pro 组件库的功能扩展，目前同样处于早期开发阶段，主要针对工具箱部分组件的需要而设计，未来有发布至 pypi 的打算。
+
+由于 qfluentwidgetsfanaddons 目前不在重点开发，下面提供的描述仅供参考，可以在工具箱的工具目录 `public/qfluentwidgetsfanaddons` 中查看源码。
+
+### line_widget
+
+#### FanRoundListWidget
+RoundListWidget 是 Pro 组件。FanRoundListWidget 在 RoundListWidget 的基础上简化了右键菜单的设置，可以通过简单的 `setRightClickMenu()` 来设置右键菜单。
+
+该函数接收两个参数，可以是两个菜单对象（`RoundMenu` 或 `QMenu`），也可以是一个菜单与一个右键菜单模式。
+
+正在开发的翻译家工具的主窗口中使用了 FanRoundListWidget，可以查看其用法。
+
+### card_widget
+
+#### ClickableCardWidget
+可点击选中的卡片组件，用来实现有复杂需求的列表。
+
+可以设置卡片可选中，需要设置选中后的颜色。将若干卡片添加到 ScrollArea 中，并自行连接信号，可以实现在一张卡片被点击时选中该卡片，同时取消选中其他卡片。
